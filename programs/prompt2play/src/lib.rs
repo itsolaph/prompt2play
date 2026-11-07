@@ -3,7 +3,7 @@ pub mod engine;
 use anchor_lang::prelude::*;
 use anchor_lang::system_program::{transfer, Transfer};
 
-declare_id!("BDS1B1m2qc8v9k61kAwnaTzThDNK7vo975bKySsAWEs7");
+declare_id!("HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2");
 
 pub const MAX_TITLE: usize = 48;
 pub const MAX_PROMPT: usize = 120;

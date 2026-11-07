@@ -38,7 +38,7 @@ scripts/                deploy-and-seed.sh, seed.mts, list.mts
 
 Rust/TS parity: `engine.rs` and `shared/engine.ts` are both run against `fixtures/replay.json`, so the on-chain rules and the client rules cannot drift silently.
 
-Level generation (`POST /api/generate` with `{"sentence": "..."}`): the server asks an LLM (`GEN_MODEL`, default `anthropic/claude-haiku-4.5`) for a level with a strict JSON schema, then validates it and solves it with BFS. It retries up to 3 times, then falls back to a deterministic procedural generator seeded by a hash of the sentence, so a request always returns a level: `{title, cells, start, move_cap, optimal_moves, source}` where `source` is `"llm"` or `"procedural"`. Without `OPENROUTER_API_KEY` it uses the procedural generator only. The browser checks the level again with its own BFS before publishing.
+Level generation (`POST /api/generate` with `{"sentence": "..."}`): the server asks an LLM (`GEN_MODEL`, default `anthropic/claude-haiku-4.5`) for a level with a strict JSON schema, then validates it and solves it with BFS. It retries up to 4 times, feeding validation errors back to the model as repair hints, then falls back to a deterministic procedural generator seeded by a hash of the sentence, so a request always returns a level: `{title, cells, start, move_cap, optimal_moves, source}` where `source` is `"llm"` or `"procedural"`. Without `OPENROUTER_API_KEY` it uses the procedural generator only. The browser checks the level again with its own BFS before publishing.
 
 ## Run it
 

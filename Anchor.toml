@@ -5,14 +5,14 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-prompt2play = "BDS1B1m2qc8v9k61kAwnaTzThDNK7vo975bKySsAWEs7"
+prompt2play = "HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2"
 
 [programs.devnet]
-prompt2play = "BDS1B1m2qc8v9k61kAwnaTzThDNK7vo975bKySsAWEs7"
+prompt2play = "HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2"
 
 [provider]
 cluster = "devnet"
-wallet = ".keys/test.json"
+wallet = "~/.config/solana/id.json"
 
 [scripts]
 test = "cargo test"

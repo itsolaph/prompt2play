@@ -1,30 +1,15 @@
 import express from "express";
-import { fallbackLevel, proceduralLevel, type Generated } from "./generate.ts";
-import { llmLevel } from "./llm.ts";
+import { type Generated } from "./generate.ts";
+import { generateWith } from "./flow.ts";
 
 // Secrets come from the environment only. The key is never logged.
 const API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = process.env.GEN_MODEL || "anthropic/claude-haiku-4.5";
 const PORT = Number(process.env.PORT || 8787);
-const ATTEMPTS = 3;
+const ATTEMPTS = 4;
 
 export async function generate(sentence: string): Promise<Generated> {
-  if (API_KEY) {
-    for (let i = 0; i < ATTEMPTS; i++) {
-      try {
-        const g = await llmLevel(sentence, API_KEY, MODEL);
-        if (g) return g;
-        console.warn(`llm attempt ${i + 1}: level rejected by validation`);
-      } catch (e) {
-        console.warn(`llm attempt ${i + 1} failed: ${(e as Error).message}`);
-      }
-    }
-  }
-  try {
-    return proceduralLevel(sentence);
-  } catch {
-    return fallbackLevel("Fallback level");
-  }
+  return generateWith(sentence, { apiKey: API_KEY, model: MODEL, attempts: ATTEMPTS });
 }
 
 const app = express();

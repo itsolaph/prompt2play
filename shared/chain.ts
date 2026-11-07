@@ -4,7 +4,7 @@ import { Connection, PublicKey, SystemProgram, TransactionInstruction } from "@s
 import bs58 from "bs58";
 import { Buffer } from "buffer";
 
-export const DEFAULT_PROGRAM_ID = "BDS1B1m2qc8v9k61kAwnaTzThDNK7vo975bKySsAWEs7";
+export const DEFAULT_PROGRAM_ID = "HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2";
 
 const IX_PUBLISH = Uint8Array.from([128, 13, 47, 112, 53, 158, 40, 49]);
 const IX_SUBMIT = Uint8Array.from([134, 48, 139, 231, 20, 213, 17, 23]);

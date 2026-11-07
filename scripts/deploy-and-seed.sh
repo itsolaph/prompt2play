@@ -33,13 +33,15 @@ mkdir -p target/deploy
 cp "$PROGRAM_KP" target/deploy/prompt2play-keypair.json
 anchor build
 
+# Optional fixed buffer keypair (BUFFER_KP) so a failed deploy resumes the same buffer.
 solana program deploy target/deploy/prompt2play.so \
   --program-id "$PROGRAM_KP" \
+  ${BUFFER_KP:+--buffer "$BUFFER_KP"} \
   --keypair "$PAYER" \
   --url "$RPC"
 
 npm install --silent
-npx tsx scripts/seed.mts"$PAYER" "$RPC" "$PROGRAM_ID"
+npx tsx scripts/seed.mts "$PAYER" "$RPC" "$PROGRAM_ID"
 
 echo
 echo "Program id: $PROGRAM_ID"

@@ -7,3 +7,4 @@ err.log
 log.jsonl
 run.pid
 run.sh
+run.done
