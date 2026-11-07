@@ -3,3 +3,7 @@ node_modules/
 target/
 .env*
 dist/
+err.log
+log.jsonl
+run.pid
+run.sh

@@ -1,0 +1,502 @@
+[
+ {
+  "name": "no_keys_ok",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 12,
+  "moves": "RRRRRDDDDD",
+  "expect": {
+   "steps": 10
+  }
+ },
+ {
+  "name": "cap_exact",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "RRRRRDDDDD",
+  "expect": {
+   "steps": 10
+  }
+ },
+ {
+  "name": "over_cap",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 9,
+  "moves": "RRRRRDDDDD",
+  "expect": {
+   "run_error": "TooManyMoves"
+  }
+ },
+ {
+  "name": "empty",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 12,
+  "moves": "",
+  "expect": {
+   "run_error": "Empty"
+  }
+ },
+ {
+  "name": "not_solved",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 12,
+  "moves": "RRRRR",
+  "expect": {
+   "run_error": "NotSolved"
+  }
+ },
+ {
+  "name": "trailing_moves",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 12,
+  "moves": "RRRRRDDDDDD",
+  "expect": {
+   "run_error": "TrailingMoves"
+  }
+ },
+ {
+  "name": "bad_move_code",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 12,
+  "moves": "RRXRR",
+  "expect": {
+   "run_error": "BadMove"
+  }
+ },
+ {
+  "name": "start_on_key",
+  "rows": [
+   "200003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 8,
+  "moves": "RRRRR",
+  "expect": {
+   "steps": 5
+  }
+ },
+ {
+  "name": "exit_locked",
+  "rows": [
+   "000003",
+   "200000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 8,
+  "moves": "RRRRR",
+  "expect": {
+   "run_error": "NotSolved"
+  }
+ },
+ {
+  "name": "locked_then_solved",
+  "rows": [
+   "000003",
+   "200000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 20,
+  "moves": "RRRRRLLLLDURRRRR",
+  "expect": {
+   "steps": 16
+  }
+ },
+ {
+  "name": "wall_bump_counts",
+  "rows": [
+   "010003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "RDRRRRRU",
+  "expect": {
+   "steps": 8
+  }
+ },
+ {
+  "name": "off_grid_bump_counts",
+  "rows": [
+   "000003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "ULRRRRR",
+  "expect": {
+   "steps": 7
+  }
+ },
+ {
+  "name": "three_keys",
+  "rows": [
+   "222003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 8,
+  "moves": "RRRRR",
+  "expect": {
+   "steps": 5
+  }
+ },
+ {
+  "name": "start_mid_exit_below",
+  "rows": [
+   "000000",
+   "000030",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   4,
+   0
+  ],
+  "move_cap": 4,
+  "moves": "D",
+  "expect": {
+   "steps": 1
+  }
+ },
+ {
+  "name": "four_keys",
+  "rows": [
+   "222203",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "TooManyKeys"
+  }
+ },
+ {
+  "name": "no_exit",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "NoExit"
+  }
+ },
+ {
+  "name": "two_exits",
+  "rows": [
+   "300003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   1,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "TooManyExits"
+  }
+ },
+ {
+  "name": "start_on_wall",
+  "rows": [
+   "100003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "StartOnWall"
+  }
+ },
+ {
+  "name": "start_on_exit",
+  "rows": [
+   "300000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "StartOnExit"
+  }
+ },
+ {
+  "name": "unreachable_exit",
+  "rows": [
+   "000103",
+   "000100",
+   "000100",
+   "000100",
+   "000100",
+   "000100"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "Unreachable"
+  }
+ },
+ {
+  "name": "key_behind_exit",
+  "rows": [
+   "000032",
+   "000011",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "Unreachable"
+  }
+ },
+ {
+  "name": "cap_zero",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 0,
+  "moves": "R",
+  "expect": {
+   "level_error": "BadMoveCap"
+  }
+ },
+ {
+  "name": "cap_41",
+  "rows": [
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000003"
+  ],
+  "start": [
+   0,
+   0
+  ],
+  "move_cap": 41,
+  "moves": "R",
+  "expect": {
+   "level_error": "BadMoveCap"
+  }
+ },
+ {
+  "name": "bad_cell",
+  "rows": [
+   "400003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   1,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "BadCell"
+  }
+ },
+ {
+  "name": "start_off_grid",
+  "rows": [
+   "000003",
+   "000000",
+   "000000",
+   "000000",
+   "000000",
+   "000000"
+  ],
+  "start": [
+   6,
+   0
+  ],
+  "move_cap": 10,
+  "moves": "R",
+  "expect": {
+   "level_error": "BadStart"
+  }
+ }
+]
