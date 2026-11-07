@@ -67,6 +67,8 @@ Environment variables:
 | `OPENROUTER_API_KEY` | server | enables LLM generation; never logged |
 | `GEN_MODEL` | server | model id, default `anthropic/claude-haiku-4.5` |
 | `PORT`, `CORS_ORIGIN` | server | listen port (8787) and allowed origin (`*`) |
+| `STATIC_DIR` | server | if set, also serves the built web client (`web/dist`) and falls back to `index.html` |
+| `IP_LIMIT_PER_MIN`, `LLM_HOURLY_CAP` | server | per-IP request cap (12/min) and global paid-LLM calls per hour (150, then procedural only) |
 | `VITE_RPC` | web | RPC URL, default devnet |
 | `VITE_PROGRAM_ID` | web | program id if you deployed your own |
 | `VITE_API_URL` | web | base URL of the level server if it is not proxied |
@@ -105,3 +107,13 @@ The payer pays for the deploy and owns three seed levels, each published and the
 | OpenRouter (hosted API, optional) | service terms |
 
 This project is released under the MIT license (see `LICENSE`).
+
+## Devnet deployment
+
+- Program id: [`HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2`](https://explorer.solana.com/address/HGtnqfg2hWFz6mC6J872r9vUtNS8VKBDwio1C7AraFZ2?cluster=devnet) (Solana devnet, upgradeable, authority = a project-only deployer wallet).
+- Deployed binary sha256 `d386ef763afd0ef9f47287753d33f6f2dfd73da07eaf850086ebb161bc109eec` (on-chain dump equals the local build of this repo).
+- Seed levels were published by the deployer wallet and solved by a separate test wallet, so the creator tip transfer ran for real:
+  - [publish 1](https://explorer.solana.com/tx/5eeo1NjsnzEHo9h44Gf1EH3qZNF7P5VqB1FJdffJS8aYtgC6aj3n74tX5qUtkDB5ZdhCgy2Ds2d8oGinNXRDN2uD?cluster=devnet), [solve 1](https://explorer.solana.com/tx/4DRwbfeX3ZqB4Rb9zLPVFi7jWMbMbBTgQKAsF4tajaQSnRqGLyh1fW33SNxYYoMmG6ZCQp1FPdnJtTWoZiJPjToW?cluster=devnet)
+  - [publish 2](https://explorer.solana.com/tx/4BobvNWjTJqfdG21QioWC3iheRdffDHfDT2qHho8LSnQdtY5wouP4cKP9tdWWnj8pag7zjaUp3G5ff1iUi6gy9NT?cluster=devnet), [solve 2](https://explorer.solana.com/tx/2j97wKstP7TRwVV4LVRV1n5NYLxDVV4gtban2Zxgkz7euTXW143VpgAefRQDdMcnccpEXVZoxyxVPkUm9bv3jdCk?cluster=devnet)
+  - [publish 3](https://explorer.solana.com/tx/4yAdxHHV5HwQ8Pg8ziGZNqpRKFPULwF4rfnZBLJicYxbocSRdBhBvPApD8RLPQGZ4CJfLrUoUs3XeMunMk6gCNPL?cluster=devnet), [solve 3](https://explorer.solana.com/tx/23pVstQEA73fsBadxyytbhztMPQ2bMkHytnNrE9Ytv5bMAYdBKAiWhZvZ5BvL93wg71iJeRT4WBNZGGJ3985tJgu?cluster=devnet)
+- The demo web app is served by the level server (`STATIC_DIR=web/dist`) behind a temporary tunnel, so its URL changes when it restarts. Connect your own wallet set to devnet.
