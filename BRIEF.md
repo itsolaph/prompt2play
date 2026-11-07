@@ -24,7 +24,7 @@ One sentence -> AI designs a playable 6x6 puzzle level -> published as an ownabl
 
 ## Rules
 - Devnet only. No mainnet. Never print or commit any key. Keypairs for deployment are NOT yours: do not create or touch ~/.config/solana. Use `solana-keygen new --no-bip39-passphrase -o ./.keys/test.json` inside the repo for tests only; .keys/ is gitignored.
-- Machine: 8 cores, 22GB RAM; export CARGO_BUILD_JOBS=2. Toolchain: `source ~/.cargo/env; export PATH="$HOME/.local/share/solana/install/active_release/bin:$HOME/.avm/bin:$PATH"`. anchor-cli 1.1.2, solana 3.1.10.
+- Machine: 8 cores, 22GB RAM; export CARGO_BUILD_JOBS=2. Toolchain (cargo, rustc, anchor, solana, solana-keygen, node, npm) is ALREADY on PATH and CARGO_BUILD_JOBS=2 is set; just run the commands directly, one simple command per call (no sourcing, no `bash -c`). anchor-cli 1.1.2, solana 3.1.10.
 - Commit in small steps. Git author is already configured; add only `Co-Authored-By: Claude <noreply@anthropic.com>`. Do not push.
 - Never background sub-agents. Prefer finishing the program + tests FIRST, then web, then seeds/README.
 - If something in the frozen mechanics is infeasible, choose the smallest deviation and note it in PROGRESS.md.
