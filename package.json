@@ -1,0 +1,12 @@
+{
+  "name": "prompt2play",
+  "private": true,
+  "workspaces": ["web", "server"],
+  "scripts": {
+    "build": "npm run build -w web",
+    "test": "npm run test -w web && npm run test -w server",
+    "typecheck": "npm run typecheck -w web && npm run typecheck -w server",
+    "server": "npm run start -w server",
+    "web": "npm run dev -w web"
+  }
+}
